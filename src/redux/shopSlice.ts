@@ -21,9 +21,9 @@ export const shopSlice = createSlice({
   name: 'commodityState',
   initialState,
   reducers: {
-    // addToBasket(state, action: PayloadAction<Goods>): void {
-    //   state.basket.push(action.payload);
-    // },
+    addToBasket(state, action: PayloadAction<Goods>): void {
+      state.basket.push(action.payload);
+    },
     getGoodsFetch(state): void {
       state.loading = true;
     },
@@ -43,9 +43,5 @@ export const shopSlice = createSlice({
 export default shopSlice.reducer;
 
 // export actions
-export const {
-  //   addToBasket,
-  getGoodsFetch,
-  getGoodsFulfilled,
-  getGoodsError,
-} = shopSlice.actions;
+export const { addToBasket, getGoodsFetch, getGoodsFulfilled, getGoodsError } =
+  shopSlice.actions;

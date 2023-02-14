@@ -1,17 +1,16 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { getGoodsFulfilled } from './shopSlice';
+import { getGoodsFulfilled, getGoodsError } from './shopSlice';
 import { Goods } from '../types';
+import { fetchGoods } from '../api';
 
-async function fetchGoods(
-  request: string = 'https://63eb6daef1a969340db7eb45.mockapi.io/technics'
-): Promise<any> {
-  return (await fetch(request)).json();
+function* workGetGoodsPending() {
+  try {
+    const res: Goods[] = yield call(fetchGoods);
+    yield put(getGoodsFulfilled(res));
+  } catch (error) {
+    yield put(getGoodsError());
+  }
 }
-
-const workGetGoodsPending = async function* () {
-  const goods: Goods[] = yield call(await fetchGoods());
-  yield put(getGoodsFulfilled(goods));
-};
 
 export function* goodsSaga() {
   yield takeEvery('commodityState/getGoodsFetch', workGetGoodsPending);
