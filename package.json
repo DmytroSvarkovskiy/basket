@@ -1,8 +1,8 @@
 {
-  "name": "currency-converter",
+  "name": "basket",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dmytrosvarkovskiy.github.io/currency-converter/",
+  "homepage": "https://dmytrosvarkovskiy.github.io/basket/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
