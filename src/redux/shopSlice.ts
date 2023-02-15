@@ -21,8 +21,11 @@ export const shopSlice = createSlice({
   name: 'commodityState',
   initialState,
   reducers: {
-    addToBasket(state, action: PayloadAction<Goods>): void {
-      state.basket.push(action.payload);
+    addToBasket(state, action: PayloadAction<string>): void {
+      const selectedProductIndx = state.goodsList.findIndex(
+        item => item.id === action.payload
+      );
+      state.basket.unshift(state.goodsList[selectedProductIndx]);
     },
     deleteFromBasket(state, action: PayloadAction<string>): void {
       const arrBasket = state.basket;
