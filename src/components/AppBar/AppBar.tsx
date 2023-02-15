@@ -15,7 +15,7 @@ export const AppBar: React.FC = () => {
     const dataId = e.dataTransfer.getData('id');
     dispatch(addToBasket(dataId));
   };
-  const dragEnd = (e: React.DragEvent<HTMLAnchorElement>) => {
+  const dragLeave = (e: React.DragEvent<HTMLAnchorElement>) => {
     e.currentTarget.id = '';
   };
   return (
@@ -30,7 +30,7 @@ export const AppBar: React.FC = () => {
             to="/basket"
             onDragOver={dragOver}
             onDrop={drop}
-            onDragLeave={e => dragEnd(e)}
+            onDragLeave={e => dragLeave(e)}
           >
             <BasketIcon />
             Basket
