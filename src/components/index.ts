@@ -3,4 +3,4 @@ export * from './Layout/Layout';
 export * from './MainPage/MainPage';
 export { default } from './Basket/Basket';
 export * from './Container/Container';
-export * from './UnitOfGoods/UnitOfGoods';
+export * from './UnitOfGoodsMain/UnitOfGoodsMain';

@@ -28,9 +28,10 @@ export const shopSlice = createSlice({
       state.basket.unshift(state.goodsList[selectedProductIndx]);
     },
     deleteFromBasket(state, action: PayloadAction<string>): void {
-      const arrBasket = state.basket;
-      const idGoods = arrBasket.findIndex(item => item.id === action.payload);
-      state.basket.slice(idGoods, 1);
+      const idGoods = state.basket.findIndex(
+        item => item.id === action.payload
+      );
+      state.basket.splice(idGoods, 1);
     },
     getGoodsFetch(state): void {
       state.loading = true;

@@ -18,7 +18,7 @@ export const Link = styled(NavLink)`
   width: 110px;
   height: 40px;
   justify-content: center;
-  transition: color 0.4s;
+  transition: color 0.4s, scale 0.4s;
   color: #688f96;
   :hover {
     color: #31700c;
@@ -27,6 +27,9 @@ export const Link = styled(NavLink)`
     color: #269726;
     border: 2px solid #269726;
     border-radius: 5px;
+  }
+  &#drop {
+    scale: 1.8;
   }
 `;
 export const BasketIcon = styled(RiShoppingBasketLine)`

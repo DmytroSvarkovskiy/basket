@@ -1,9 +1,9 @@
 import { Goods } from '../../types';
-import { Item, ItemImg, TextWrap, BuyBtn } from './UnitOfGoods.styled';
+import { Item, ItemImg, TextWrap, BuyBtn } from './UnitOfGoodsMain.styled';
 import { addToBasket } from '../../redux';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
-export const UnitOfGoods: React.FC<Goods> = ({
+export const UnitOfGoodsMain: React.FC<Goods> = ({
   id,
   name,
   price,
@@ -19,19 +19,34 @@ export const UnitOfGoods: React.FC<Goods> = ({
   const IsInBasket = goodsInBasket.find(item => item.id === id);
 
   // add to basket function
-  const handleClickToAdd = (id: string): void => {
+  const handleClickToBuy = (id: string): void => {
     dispatch(addToBasket(id));
   };
+
+  // add a drop function
+  const dragStart = (e: React.DragEvent<HTMLLIElement>, id: string) => {
+    e.dataTransfer.setData('id', id);
+  };
+
+  const dragOver = (e: React.DragEvent<HTMLLIElement>) => {
+    e.preventDefault();
+  };
+
   return (
-    <Item id={id}>
-      <ItemImg src={avatar} alt={name} />
+    <Item
+      id={id}
+      draggable={IsInBasket ? false : true}
+      onDragStart={e => dragStart(e, id)}
+      onDragOver={dragOver}
+    >
+      <ItemImg src={avatar} alt={name} draggable={false} />
       <TextWrap>
         <p>Name:&nbsp;{name}</p>
         <p>Price:&nbsp;{price}$</p>
         <p>Remainder:&nbsp;{remainder}</p>
       </TextWrap>
       <BuyBtn
-        onClick={() => handleClickToAdd(id)}
+        onClick={() => handleClickToBuy(id)}
         //   if the product is in the basket, we make the button inactive
         disabled={IsInBasket ? true : false}
       >

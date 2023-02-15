@@ -1,6 +1,23 @@
 import { Container } from '../index';
+import { useAppDispatch } from '../../hooks';
+import { addToBasket } from '../../redux';
 import { Nav, Link, BasketIcon, ShopIcon } from './AppBar.styled';
 export const AppBar: React.FC = () => {
+  const dispatch = useAppDispatch();
+
+  const dragOver = (e: React.DragEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    e.currentTarget.id = 'drop';
+  };
+  const drop = (e: React.DragEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    e.currentTarget.id = '';
+    const dataId = e.dataTransfer.getData('id');
+    dispatch(addToBasket(dataId));
+  };
+  const dragEnd = (e: React.DragEvent<HTMLAnchorElement>) => {
+    e.currentTarget.id = '';
+  };
   return (
     <header>
       <Container>
@@ -9,7 +26,12 @@ export const AppBar: React.FC = () => {
             <ShopIcon />
             Shop
           </Link>
-          <Link to="/basket">
+          <Link
+            to="/basket"
+            onDragOver={dragOver}
+            onDrop={drop}
+            onDragLeave={e => dragEnd(e)}
+          >
             <BasketIcon />
             Basket
           </Link>

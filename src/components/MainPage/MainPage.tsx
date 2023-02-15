@@ -1,5 +1,5 @@
 import { useAppSelector } from '../../hooks';
-import { UnitOfGoods } from '../index';
+import { UnitOfGoodsMain } from '../index';
 import { Title, GoodsUl } from './MainPage.styled';
 
 export const MainPage: React.FC = () => {
@@ -11,7 +11,7 @@ export const MainPage: React.FC = () => {
       <GoodsUl>
         {goodsList.map(({ id, name, price, avatar, remainder }) => {
           return (
-            <UnitOfGoods
+            <UnitOfGoodsMain
               key={id}
               id={id}
               name={name}
