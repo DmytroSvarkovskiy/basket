@@ -24,6 +24,11 @@ export const shopSlice = createSlice({
     addToBasket(state, action: PayloadAction<Goods>): void {
       state.basket.push(action.payload);
     },
+    deleteFromBasket(state, action: PayloadAction<string>): void {
+      const arrBasket = state.basket;
+      const idGoods = arrBasket.findIndex(item => item.id === action.payload);
+      state.basket.slice(idGoods, 1);
+    },
     getGoodsFetch(state): void {
       state.loading = true;
     },
@@ -43,5 +48,10 @@ export const shopSlice = createSlice({
 export default shopSlice.reducer;
 
 // export actions
-export const { addToBasket, getGoodsFetch, getGoodsFulfilled, getGoodsError } =
-  shopSlice.actions;
+export const {
+  addToBasket,
+  getGoodsFetch,
+  getGoodsFulfilled,
+  getGoodsError,
+  deleteFromBasket,
+} = shopSlice.actions;
