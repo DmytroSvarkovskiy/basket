@@ -7,11 +7,12 @@ export const GlobalStyle = createGlobalStyle`
     padding:0};
 
   body{
-    background:#e0f0f1;
+    background:#ececec;
     color: '#010101'; 
   };
 
   a{
     text-decoration:none;
     color:inherit};
+    header{ border: 2px solid gray; }
 `;
