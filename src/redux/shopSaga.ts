@@ -5,8 +5,8 @@ import { fetchGoods } from '../api';
 
 function* workGetGoodsPending() {
   try {
-    const res: Goods[] = yield call(fetchGoods);
-    yield put(getGoodsFulfilled(res));
+    const response: Goods[] = yield call(fetchGoods);
+    yield put(getGoodsFulfilled(response));
   } catch (error) {
     yield put(getGoodsError());
   }

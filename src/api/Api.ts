@@ -1,5 +1,8 @@
 import axios from 'axios';
 import { Goods } from '../types';
+
+// create a server request function
+
 axios.defaults.baseURL = 'https://63eb6daef1a969340db7eb45.mockapi.io';
 
 export async function fetchGoods() {

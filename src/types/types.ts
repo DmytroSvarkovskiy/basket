@@ -3,4 +3,5 @@ export type Goods = {
   avatar: string;
   price: number;
   id: string;
+  remainder: string;
 };
