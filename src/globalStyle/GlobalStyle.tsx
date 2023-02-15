@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     padding:0};
 
   body{
-    background: linear-gradient(90deg,#faf0cd, #f1dcd4);
+    background:#e0f0f1;
     color: '#010101'; 
   };
 
