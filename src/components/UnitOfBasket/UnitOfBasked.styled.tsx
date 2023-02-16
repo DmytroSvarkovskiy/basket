@@ -28,8 +28,9 @@ export const ItemImgBasket = styled.img`
 `;
 export const TextWrapBasket = styled.div`
   padding: 10px 5px;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
+  max-width: 269px;
 `;
 export const DeleteBtn = styled.button`
   position: absolute;

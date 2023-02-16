@@ -1,5 +1,11 @@
 import { useAppSelector } from '../../hooks';
-import { TitleBasket, BasketWrap, BasketUl, OrderBtn } from './Basket.styled';
+import {
+  TitleBasket,
+  BasketWrap,
+  BasketUl,
+  OrderBtn,
+  InfoOrderWrap,
+} from './Basket.styled';
 import { UnitOfBasket } from '../UnitOfBasket/UnitOfBasket';
 import { useEffect, useState } from 'react';
 
@@ -14,12 +20,12 @@ const Basket: React.FC = () => {
 
   return (
     <BasketWrap>
-      <TitleBasket>Complete your purchase</TitleBasket>
-      <div>
+      <TitleBasket draggable={false}>Complete your purchase</TitleBasket>
+      <InfoOrderWrap>
         {' '}
         <h3>Total Price:{totalPrice}$</h3>
         <OrderBtn>To order</OrderBtn>
-      </div>
+      </InfoOrderWrap>
 
       <BasketUl>
         {goodsInBasket.map(({ id, name, price, avatar, remainder }) => {

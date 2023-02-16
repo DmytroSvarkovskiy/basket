@@ -4,7 +4,8 @@ import { useAppDispatch } from './hooks';
 import { getGoodsFetch } from './redux';
 import { useEffect, lazy } from 'react';
 import { Layout, MainPage } from './components';
-const Basket = lazy(() => import('./components'));
+
+const Basket = lazy(() => import('./components/'));
 
 function App() {
   const dispatch = useAppDispatch();

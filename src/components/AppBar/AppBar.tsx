@@ -32,7 +32,7 @@ export const AppBar: React.FC = () => {
       <WrapHeader>
         <Container>
           <Nav>
-            <Link to="/">
+            <Link to="/" draggable={false}>
               <ShopIcon />
               Shop
             </Link>

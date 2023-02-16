@@ -1,7 +1,6 @@
 import { useAppSelector } from '../../hooks';
 import { UnitOfGoodsMain } from '../index';
 import { Title, GoodsUl, MainWrap } from './MainPage.styled';
-
 export const MainPage: React.FC = () => {
   const goodsList = useAppSelector(state => state.commodityState.goodsList);
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-export const TitleBasket = styled.h1`
+export const TitleBasket = styled.h2`
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 `;
 
 export const BasketUl = styled.ul`
@@ -16,13 +16,12 @@ export const BasketWrap = styled.div`
 export const OrderBtn = styled.button`
   transform: translate(-40% -40%);
   display: block;
-  margin: 0 auto;
-  width: 95%;
+  width: 200px;
   border-radius: 5px;
   outline: none;
   cursor: pointer;
   border: none;
-  height: 35px;
+  height: 45px;
   background-color: #389755;
   color: #ffffff;
   &:disabled {
@@ -33,4 +32,8 @@ export const OrderBtn = styled.button`
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px 0px;
   }
   transition: background-color 0.25s, box-shadow 0.3s;
+`;
+export const InfoOrderWrap = styled.div`
+  display: flex;
+  justify-content: space-evenly;
 `;
