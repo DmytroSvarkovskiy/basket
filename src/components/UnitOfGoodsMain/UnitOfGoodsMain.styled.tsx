@@ -10,6 +10,9 @@ export const Item = styled.li`
       rgba(3, 17, 11, 0.1) 0px 8px 24px, rgba(7, 44, 32, 0.1) 0px 16px 56px;
   }
   padding-bottom: 10px;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
 `;
 export const ItemImg = styled.img`
   width: 280px;

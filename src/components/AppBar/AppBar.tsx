@@ -13,7 +13,9 @@ export const AppBar: React.FC = () => {
     e.preventDefault();
     e.currentTarget.id = '';
     const dataId = e.dataTransfer.getData('id');
-    dispatch(addToBasket(dataId));
+    if (dataId.includes('id')) {
+      dispatch(addToBasket(dataId));
+    }
   };
   const dragLeave = (e: React.DragEvent<HTMLAnchorElement>) => {
     e.currentTarget.id = '';
