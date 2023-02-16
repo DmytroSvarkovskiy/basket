@@ -15,6 +15,7 @@ export const Item = styled.li`
   user-select: none;
 `;
 export const ItemImg = styled.img`
+  object-fit: cover;
   width: 280px;
   height: 220px;
   overflow: hidden;
@@ -45,4 +46,10 @@ export const BuyBtn = styled.button`
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px 0px;
   }
   transition: background-color 0.25s, box-shadow 0.3s;
+`;
+
+export const Remainder = styled.span<{ children: string }>`
+  color: ${({ children }): string => {
+    return +children <= 3 ? 'red' : 'inherit';
+  }};
 `;

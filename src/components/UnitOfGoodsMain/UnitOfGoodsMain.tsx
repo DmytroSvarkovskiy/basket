@@ -1,5 +1,11 @@
 import { Goods } from '../../types';
-import { Item, ItemImg, TextWrap, BuyBtn } from './UnitOfGoodsMain.styled';
+import {
+  Item,
+  ItemImg,
+  TextWrap,
+  BuyBtn,
+  Remainder,
+} from './UnitOfGoodsMain.styled';
 import { addToBasket } from '../../redux';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
@@ -43,12 +49,16 @@ export const UnitOfGoodsMain: React.FC<Goods> = ({
       <TextWrap>
         <p>Name:&nbsp;{name}</p>
         <p>Price:&nbsp;{price}$</p>
-        <p>Remainder:&nbsp;{remainder}</p>
+        <p>
+          Remainder:&nbsp;
+          <Remainder>{IsInBasket ? +remainder - 1 + '' : remainder}</Remainder>
+        </p>
       </TextWrap>
+
       <BuyBtn
         onClick={() => handleClickToBuy(id)}
         //   if the product is in the basket, we make the button inactive
-        disabled={IsInBasket ? true : false}
+        disabled={IsInBasket || +remainder <= 0 ? true : false}
       >
         {IsInBasket ? 'in the basket' : 'BUY'}
       </BuyBtn>
