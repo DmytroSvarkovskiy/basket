@@ -1,6 +1,5 @@
 import { useAppSelector } from '../../hooks';
-import { TitleBasket } from './Basket.styled';
-import { GoodsUl } from '../MainPage/MainPage.styled';
+import { TitleBasket, BasketWrap, BasketUl } from './Basket.styled';
 import { UnitOfBasket } from '../UnitOfBasket/UnitOfBasket';
 
 const Basket: React.FC = () => {
@@ -8,11 +7,11 @@ const Basket: React.FC = () => {
   const totalPrice = goodsInBasket.reduce((acc, item) => item.price + acc, 0);
 
   return (
-    <div>
-      <TitleBasket>Selected products for purchase</TitleBasket>
+    <BasketWrap>
+      <TitleBasket>Complete your purchase</TitleBasket>
       <h3>Total Price:{totalPrice}$</h3>
 
-      <GoodsUl>
+      <BasketUl>
         {goodsInBasket.map(({ id, name, price, avatar, remainder }) => {
           return (
             <UnitOfBasket
@@ -25,8 +24,8 @@ const Basket: React.FC = () => {
             />
           );
         })}
-      </GoodsUl>
-    </div>
+      </BasketUl>
+    </BasketWrap>
   );
 };
 export default Basket;

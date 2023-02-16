@@ -17,7 +17,7 @@ export const Nav = styled.nav`
 export const WrapHeader = styled.div`
   position: fixed;
   border-bottom: 2px solid gray;
-  background-color: #d1d8c6;
+  background-color: #bdc7ac;
   width: 100%;
   z-index: 1;
 `;
@@ -53,4 +53,18 @@ export const ShopIcon = styled(AiOutlineShop)`
   width: 30px;
   height: 30px;
   margin-right: 5px;
+`;
+export const CountGoods = styled.span`
+  position: absolute;
+  right: -6px;
+  top: 4px;
+  background-color: #5b831b;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
 `;

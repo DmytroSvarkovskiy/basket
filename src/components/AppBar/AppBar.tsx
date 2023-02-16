@@ -1,9 +1,18 @@
 import { Container } from '../index';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { addToBasket } from '../../redux';
-import { Nav, Link, BasketIcon, ShopIcon, WrapHeader } from './AppBar.styled';
+import {
+  Nav,
+  Link,
+  BasketIcon,
+  ShopIcon,
+  WrapHeader,
+  CountGoods,
+} from './AppBar.styled';
 export const AppBar: React.FC = () => {
   const dispatch = useAppDispatch();
+  const goodsInBasket = useAppSelector(state => state.commodityState.basket);
+  const countGoodsInBasket = goodsInBasket.length;
 
   const dragOver = (e: React.DragEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -36,6 +45,9 @@ export const AppBar: React.FC = () => {
               <BasketIcon />
               Basket
             </Link>
+            {countGoodsInBasket !== 0 && (
+              <CountGoods>{countGoodsInBasket}</CountGoods>
+            )}
           </Nav>
         </Container>
       </WrapHeader>
