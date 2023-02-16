@@ -52,7 +52,7 @@ export const UnitOfBasket: React.FC<Goods & Price> = ({
       <CountBasketWrap>
         <CountBtn
           onClick={toAddCount}
-          disabled={count === +remainder ? true : false}
+          disabled={count === Number(remainder) ? true : false}
         >
           +
         </CountBtn>
