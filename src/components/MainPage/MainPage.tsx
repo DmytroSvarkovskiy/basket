@@ -1,12 +1,12 @@
 import { useAppSelector } from '../../hooks';
 import { UnitOfGoodsMain } from '../index';
-import { Title, GoodsUl } from './MainPage.styled';
+import { Title, GoodsUl, MainWrap } from './MainPage.styled';
 
 export const MainPage: React.FC = () => {
   const goodsList = useAppSelector(state => state.commodityState.goodsList);
 
   return (
-    <div>
+    <MainWrap>
       <Title>Wellcome to our shop! Сhoose the product you like </Title>
       <GoodsUl>
         {goodsList.map(({ id, name, price, avatar, remainder }) => {
@@ -22,6 +22,6 @@ export const MainPage: React.FC = () => {
           );
         })}
       </GoodsUl>
-    </div>
+    </MainWrap>
   );
 };

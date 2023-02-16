@@ -1,7 +1,7 @@
 import { Container } from '../index';
 import { useAppDispatch } from '../../hooks';
 import { addToBasket } from '../../redux';
-import { Nav, Link, BasketIcon, ShopIcon } from './AppBar.styled';
+import { Nav, Link, BasketIcon, ShopIcon, WrapHeader } from './AppBar.styled';
 export const AppBar: React.FC = () => {
   const dispatch = useAppDispatch();
 
@@ -20,23 +20,25 @@ export const AppBar: React.FC = () => {
   };
   return (
     <header>
-      <Container>
-        <Nav>
-          <Link to="/">
-            <ShopIcon />
-            Shop
-          </Link>
-          <Link
-            to="/basket"
-            onDragOver={dragOver}
-            onDrop={drop}
-            onDragLeave={e => dragLeave(e)}
-          >
-            <BasketIcon />
-            Basket
-          </Link>
-        </Nav>
-      </Container>
+      <WrapHeader>
+        <Container>
+          <Nav>
+            <Link to="/">
+              <ShopIcon />
+              Shop
+            </Link>
+            <Link
+              to="/basket"
+              onDragOver={dragOver}
+              onDrop={drop}
+              onDragLeave={e => dragLeave(e)}
+            >
+              <BasketIcon />
+              Basket
+            </Link>
+          </Nav>
+        </Container>
+      </WrapHeader>
     </header>
   );
 };

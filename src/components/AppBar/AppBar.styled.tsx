@@ -4,13 +4,22 @@ import { RiShoppingBasketLine } from 'react-icons/ri';
 import { AiOutlineShop } from 'react-icons/ai';
 
 export const Nav = styled.nav`
-  width: 100%;
   display: flex;
+  width: 1169px;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 0;
+  padding: 15px 3px;
   font-size: 20px;
   font-weight: 500;
+  position: relative;
+  z-index: 1;
+`;
+export const WrapHeader = styled.div`
+  position: fixed;
+  border-bottom: 2px solid gray;
+  background-color: #d1d8c6;
+  width: 100%;
+  z-index: 1;
 `;
 export const Link = styled(NavLink)`
   display: flex;

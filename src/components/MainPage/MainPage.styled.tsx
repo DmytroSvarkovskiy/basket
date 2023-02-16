@@ -9,3 +9,6 @@ export const GoodsUl = styled.ul`
   gap: 15px;
   padding: 20px 0;
 `;
+export const MainWrap = styled.div`
+  padding-top: 100px;
+`;

@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
   a{
     text-decoration:none;
     color:inherit};
-    
-  header{ border: 2px solid gray;
-    margin-bottom:20px; }
+  main{ 
+ 
+    }
 `;
