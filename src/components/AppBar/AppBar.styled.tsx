@@ -30,6 +30,9 @@ export const Link = styled(NavLink)`
   }
   &#drop {
     scale: 1.8;
+    color: #179e54;
+    border: 2px dotted #269726;
+    border-radius: 7px;
   }
 `;
 export const BasketIcon = styled(RiShoppingBasketLine)`
