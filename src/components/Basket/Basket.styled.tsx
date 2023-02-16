@@ -8,13 +8,12 @@ export const BasketUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  padding: 20px 0;
+  padding: 30px 0;
 `;
 export const BasketWrap = styled.div`
   padding-top: 100px;
 `;
 export const OrderBtn = styled.button`
-  transform: translate(-40% -40%);
   display: block;
   width: 200px;
   border-radius: 5px;
@@ -36,4 +35,6 @@ export const OrderBtn = styled.button`
 export const InfoOrderWrap = styled.div`
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
+  font-size: 24px;
 `;

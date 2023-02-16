@@ -5,6 +5,9 @@ import {
   TextWrapBasket,
   DeleteBtn,
   DeleteIcon,
+  CountBtn,
+  CountBasketWrap,
+  RemainterBasket,
 } from './UnitOfBasked.styled';
 import { useState } from 'react';
 import { deleteFromBasket } from '../../redux';
@@ -46,21 +49,21 @@ export const UnitOfBasket: React.FC<Goods & Price> = ({
         <p>Name:&nbsp;{name}</p>
         <p>Price:&nbsp;{price}$</p>
       </TextWrapBasket>
-      <div>
-        <button
+      <CountBasketWrap>
+        <CountBtn
           onClick={toAddCount}
           disabled={count === +remainder ? true : false}
         >
           +
-        </button>
+        </CountBtn>
         <p>
           You buy:&nbsp;<span>{count}</span>
         </p>
-        <button onClick={toReduceClick} disabled={count === 0 ? true : false}>
+        <CountBtn onClick={toReduceClick} disabled={count === 0 ? true : false}>
           -
-        </button>
-      </div>
-      <p>Remainter: &nbsp;{+remainder - count}</p>
+        </CountBtn>
+      </CountBasketWrap>
+      <RemainterBasket>Remainter: &nbsp;{+remainder - count}</RemainterBasket>
       <DeleteBtn onClick={() => handleClickDelete(id)}>
         <DeleteIcon />
       </DeleteBtn>

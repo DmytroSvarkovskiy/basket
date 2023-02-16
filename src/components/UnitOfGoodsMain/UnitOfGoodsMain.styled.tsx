@@ -24,8 +24,11 @@ export const ItemImg = styled.img`
 `;
 export const TextWrap = styled.div`
   padding: 10px 5px;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 `;
 export const BuyBtn = styled.button`
   display: block;
