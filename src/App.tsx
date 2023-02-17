@@ -23,7 +23,7 @@ function App() {
           <Route path="/basket" element={<Basket />} />
         </Route>
       </Routes>
-      <ToastContainer autoClose={3000} />
+      <ToastContainer autoClose={3000} position="top-center" />
       <GlobalStyle />
     </div>
   );
