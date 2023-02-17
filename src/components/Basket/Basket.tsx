@@ -6,13 +6,15 @@ import {
   OrderBtn,
   InfoOrderWrap,
 } from './Basket.styled';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { UnitOfBasket } from '../UnitOfBasket/UnitOfBasket';
 
 const Basket: React.FC = () => {
   const goodsInBasket = useAppSelector(state => state.commodityState.basket);
   const startPrice = goodsInBasket.reduce((acc, item) => item.price + acc, 0);
-
+  useEffect(() => {
+    setTotalPrice(startPrice);
+  }, [startPrice]);
   const [totalPrice, setTotalPrice] = useState(startPrice);
   return (
     <BasketWrap>

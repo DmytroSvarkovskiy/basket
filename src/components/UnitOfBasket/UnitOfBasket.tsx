@@ -48,17 +48,18 @@ export const UnitOfBasket: React.FC<Goods & PropsPrice> = ({
         <p>Price:&nbsp;{price}$</p>
       </TextWrapBasket>
       <CountBasketWrap>
+        <CountBtn onClick={toReduceClick} disabled={count === 1 ? true : false}>
+          -
+        </CountBtn>
+
+        <p>
+          You buy:&nbsp;<span>{count}</span>
+        </p>
         <CountBtn
           onClick={toAddCount}
           disabled={count === Number(remainder) ? true : false}
         >
           +
-        </CountBtn>
-        <p>
-          You buy:&nbsp;<span>{count}</span>
-        </p>
-        <CountBtn onClick={toReduceClick} disabled={count === 1 ? true : false}>
-          -
         </CountBtn>
       </CountBasketWrap>
       <RemainterBasket>Remainter: &nbsp;{+remainder - count}</RemainterBasket>
