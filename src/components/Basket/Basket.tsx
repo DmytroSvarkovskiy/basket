@@ -6,7 +6,7 @@ import {
   OrderBtn,
   InfoOrderWrap,
 } from './Basket.styled';
-import { UnitOfBasket } from '../UnitOfBasket/UnitOfBasket';
+import { UnitOfBasket } from '../index';
 
 const Basket: React.FC = () => {
   const goodsInBasket = useAppSelector(state => state.commodityState.basket);
@@ -29,6 +29,7 @@ const Basket: React.FC = () => {
           <InfoOrderWrap>
             {' '}
             <h3>Total Price:{totalPrice}$</h3>
+            <h3>Quantity of goods:{goodsInBasket.length}</h3>
             <OrderBtn>To order</OrderBtn>
           </InfoOrderWrap>
         </>

@@ -15,6 +15,9 @@ export const Layout: React.FC = () => {
           </Container>
         </section>
       </main>
+      <footer>
+        <Container></Container>
+      </footer>
     </>
   );
 };

@@ -41,6 +41,7 @@ export const UnitOfGoodsMain: React.FC<Goods> = ({
   return (
     <Item
       id={id}
+      // you can drag the product only from the store
       draggable={IsInBasket ? false : true}
       onDragStart={e => dragStart(e, id)}
       onDragOver={dragOver}

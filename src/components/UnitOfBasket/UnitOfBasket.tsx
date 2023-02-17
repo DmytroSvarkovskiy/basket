@@ -45,13 +45,15 @@ export const UnitOfBasket: React.FC<Goods> = ({
         <p>Price:&nbsp;{price}$</p>
       </TextWrapBasket>
       <CountBasketWrap>
+        {/* it is not possible to choose less than 1 product, for this we make the
+        button inactive */}
         <CountBtn onClick={toReduceClick} disabled={count === 1 ? true : false}>
           -
         </CountBtn>
-
         <p>
           You buy:&nbsp;<span>{count}</span>
         </p>
+        {/* you cannot select more products than are available */}
         <CountBtn
           onClick={toAddCount}
           disabled={count === Number(remainder) ? true : false}
@@ -59,6 +61,7 @@ export const UnitOfBasket: React.FC<Goods> = ({
           +
         </CountBtn>
       </CountBasketWrap>
+      {/* calculate and show the remainder */}
       <RemainterBasket>Remainter: &nbsp;{+remainder - count}</RemainterBasket>
       <DeleteBtn onClick={() => handleClickDelete(id)} title="delete">
         <DeleteIcon />

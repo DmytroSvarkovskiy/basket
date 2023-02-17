@@ -50,9 +50,9 @@ export const BuyBtn = styled.button`
   }
   transition: background-color 0.25s, box-shadow 0.3s;
 `;
-
+// if there are less than 4 units of the product left, the text is red
 export const Remainder = styled.span<{ children: string }>`
   color: ${({ children }): string => {
-    return +children <= 3 ? 'red' : 'inherit';
+    return +children < 4 ? 'red' : 'inherit';
   }};
 `;

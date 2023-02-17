@@ -1,20 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Goods } from '../types';
 import { toast } from 'react-toastify';
-type Count = {
-  name: string;
-  avatar: string;
-  price: number;
-  id: string;
-  remainder: string;
-  quantity: number;
-};
-type GoodState = {
-  goodsList: Goods[];
-  error: boolean;
-  loading: boolean;
-  basket: Count[];
-};
+import { QuantityType, GoodState } from '../types';
 
 const initialState: GoodState = {
   goodsList: [],
@@ -29,43 +16,51 @@ export const shopSlice = createSlice({
   name: 'commodityState',
   initialState,
   reducers: {
+    // add to basket function
     addToBasket(state, action: PayloadAction<string>): void {
+      // we are looking for an index
       const selectedProductIndx = state.goodsList.findIndex(
         item => item.id === action.payload
       );
+      // add product
       state.basket.unshift({
         ...state.goodsList[selectedProductIndx],
         quantity: 1,
       });
       toast.success('the product has been added to the basket');
     },
-    changeQuantity(
-      state,
-      action: PayloadAction<{ id: string; operation: string }>
-    ) {
+    // change the quantity of the product in the basket
+    changeQuantity(state, action: PayloadAction<QuantityType>) {
+      // we are looking for an index
       const indexEl = state.basket.findIndex(
         item => item.id === action.payload.id
       );
+      // we check which action needs to be performed and perform it
       action.payload.operation === 'plus'
         ? (state.basket[indexEl].quantity += 1)
         : (state.basket[indexEl].quantity -= 1);
     },
+    // removing the product from the shopping cart
     deleteFromBasket(state, action: PayloadAction<string>): void {
-      const idGoods = state.basket.findIndex(
+      // we are looking for an index
+      const indxGoods = state.basket.findIndex(
         item => item.id === action.payload
       );
-      state.basket.splice(idGoods, 1);
+      // removing the product
+      state.basket.splice(indxGoods, 1);
       toast.info('the product has been removed from the basket');
     },
-
+    // request to the server
     getGoodsFetch(state): void {
       state.loading = true;
     },
+    // in case of a successful response
     getGoodsFulfilled(state, action: PayloadAction<Goods[]>): void {
       state.error = false;
       state.loading = false;
       state.goodsList = [...action.payload];
     },
+    // in case of successful error
     getGoodsError(state): void {
       state.error = true;
       state.loading = false;

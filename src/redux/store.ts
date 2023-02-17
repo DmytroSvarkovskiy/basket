@@ -5,6 +5,7 @@ import { goodsSaga } from './shopSaga';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+// configuration in order to write the necessary data to the local storage
 const persistConfig = {
   key: 'basket',
   storage,
