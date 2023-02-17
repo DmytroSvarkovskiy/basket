@@ -9,7 +9,7 @@ import {
   CountBasketWrap,
   RemainterBasket,
 } from './UnitOfBasked.styled';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { deleteFromBasket } from '../../redux';
 import { useAppDispatch } from '../../hooks';
 
@@ -25,9 +25,7 @@ export const UnitOfBasket: React.FC<Goods & Price> = ({
   calculationPrice,
 }) => {
   const [count, setCount] = useState<number>(1);
-  useEffect(() => {
-    calculationPrice(prevState => prevState + count * +price);
-  }, [calculationPrice, count, price]);
+
   const dispatch = useAppDispatch();
 
   // remove from basket
@@ -61,7 +59,7 @@ export const UnitOfBasket: React.FC<Goods & Price> = ({
         <p>
           You buy:&nbsp;<span>{count}</span>
         </p>
-        <CountBtn onClick={toReduceClick} disabled={count === 0 ? true : false}>
+        <CountBtn onClick={toReduceClick} disabled={count === 1 ? true : false}>
           -
         </CountBtn>
       </CountBasketWrap>
