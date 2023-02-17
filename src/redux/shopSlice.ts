@@ -1,12 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Goods } from '../types';
 import { toast } from 'react-toastify';
-
+type Count = {
+  name: string;
+  avatar: string;
+  price: number;
+  id: string;
+  remainder: string;
+  quantity: number;
+};
 type GoodState = {
   goodsList: Goods[];
   error: boolean;
   loading: boolean;
-  basket: Goods[];
+  basket: Count[];
 };
 
 const initialState: GoodState = {
@@ -26,8 +33,22 @@ export const shopSlice = createSlice({
       const selectedProductIndx = state.goodsList.findIndex(
         item => item.id === action.payload
       );
-      state.basket.unshift(state.goodsList[selectedProductIndx]);
+      state.basket.unshift({
+        ...state.goodsList[selectedProductIndx],
+        quantity: 1,
+      });
       toast.success('the product has been added to the basket');
+    },
+    changeQuantity(
+      state,
+      action: PayloadAction<{ id: string; operation: string }>
+    ) {
+      const indexEl = state.basket.findIndex(
+        item => item.id === action.payload.id
+      );
+      action.payload.operation === 'plus'
+        ? (state.basket[indexEl].quantity += 1)
+        : (state.basket[indexEl].quantity -= 1);
     },
     deleteFromBasket(state, action: PayloadAction<string>): void {
       const idGoods = state.basket.findIndex(
@@ -62,4 +83,5 @@ export const {
   getGoodsFulfilled,
   getGoodsError,
   deleteFromBasket,
+  changeQuantity,
 } = shopSlice.actions;

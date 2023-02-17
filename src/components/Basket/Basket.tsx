@@ -6,26 +6,35 @@ import {
   OrderBtn,
   InfoOrderWrap,
 } from './Basket.styled';
-import { useState, useEffect } from 'react';
 import { UnitOfBasket } from '../UnitOfBasket/UnitOfBasket';
 
 const Basket: React.FC = () => {
   const goodsInBasket = useAppSelector(state => state.commodityState.basket);
-  const startPrice = goodsInBasket.reduce((acc, item) => item.price + acc, 0);
-  useEffect(() => {
-    setTotalPrice(startPrice);
-  }, [startPrice]);
-  const [totalPrice, setTotalPrice] = useState(startPrice);
+  const totalPrice = goodsInBasket.reduce(
+    (acc, item) => item.quantity * item.price + acc,
+    0
+  );
+
   return (
     <BasketWrap>
-      <TitleBasket draggable={false}>Complete your purchase</TitleBasket>
-      <InfoOrderWrap>
-        {' '}
-        <h3>Total Price:{totalPrice}$</h3>
-        <OrderBtn>To order</OrderBtn>
-      </InfoOrderWrap>
-
+      {/* if the goods are not in the basket, we display this information */}
+      {goodsInBasket.length === 0 ? (
+        //  {/* disable the ability to drag items in the basket */}
+        <TitleBasket draggable={false}>
+          You have not added any products to the basket
+        </TitleBasket>
+      ) : (
+        <>
+          <TitleBasket draggable={false}>Complete your purchase</TitleBasket>
+          <InfoOrderWrap>
+            {' '}
+            <h3>Total Price:{totalPrice}$</h3>
+            <OrderBtn>To order</OrderBtn>
+          </InfoOrderWrap>
+        </>
+      )}
       <BasketUl>
+        {/* map the list of products and dynamically create cards with products */}
         {goodsInBasket.map(({ id, name, price, avatar, remainder }) => {
           return (
             <UnitOfBasket
@@ -35,7 +44,6 @@ const Basket: React.FC = () => {
               price={price}
               avatar={avatar}
               remainder={remainder}
-              setTotalPrice={setTotalPrice}
             />
           );
         })}

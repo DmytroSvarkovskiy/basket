@@ -10,18 +10,15 @@ import {
   RemainterBasket,
 } from './UnitOfBasked.styled';
 import { useState } from 'react';
-import { deleteFromBasket } from '../../redux';
+import { deleteFromBasket, changeQuantity } from '../../redux';
 import { useAppDispatch } from '../../hooks';
-type PropsPrice = {
-  setTotalPrice: React.Dispatch<React.SetStateAction<number>>;
-};
-export const UnitOfBasket: React.FC<Goods & PropsPrice> = ({
+
+export const UnitOfBasket: React.FC<Goods> = ({
   id,
   name,
   price,
   avatar,
   remainder,
-  setTotalPrice,
 }) => {
   const [count, setCount] = useState<number>(1);
   const dispatch = useAppDispatch();
@@ -33,11 +30,11 @@ export const UnitOfBasket: React.FC<Goods & PropsPrice> = ({
   // change the quantity of the product
   const toAddCount = () => {
     setCount(prevCount => prevCount + 1);
-    setTotalPrice(prevState => prevState + price);
+    dispatch(changeQuantity({ id, operation: 'plus' }));
   };
   const toReduceClick = () => {
     setCount(prevCount => prevCount - 1);
-    setTotalPrice(prevState => prevState - price);
+    dispatch(changeQuantity({ id, operation: 'minus' }));
   };
 
   return (
