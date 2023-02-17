@@ -45,7 +45,11 @@ export const DeleteBtn = styled.button`
 export const DeleteIcon = styled(TiDelete)`
   width: 50px;
   height: 50px;
-  color: red;
+  color: #f15e5e;
+  transition: scale 0.3s;
+  :hover {
+    scale: 1.1;
+  }
 `;
 export const CountBtn = styled.button`
   display: flex;
@@ -84,4 +88,9 @@ export const RemainterBasket = styled.p`
   margin-left: 5px;
   font-size: 18px;
   font-weight: 500;
+`;
+export const RemainderBasket = styled.span<{ children: string }>`
+  color: ${({ children }): string => {
+    return +children <= 3 ? 'red' : 'inherit';
+  }};
 `;

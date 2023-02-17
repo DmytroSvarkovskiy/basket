@@ -64,7 +64,7 @@ export const UnitOfBasket: React.FC<Goods & Price> = ({
         </CountBtn>
       </CountBasketWrap>
       <RemainterBasket>Remainter: &nbsp;{+remainder - count}</RemainterBasket>
-      <DeleteBtn onClick={() => handleClickDelete(id)}>
+      <DeleteBtn onClick={() => handleClickDelete(id)} title="delete">
         <DeleteIcon />
       </DeleteBtn>
     </ItemBasket>

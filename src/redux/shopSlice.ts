@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Goods } from '../types';
+import { toast } from 'react-toastify';
 
 type GoodState = {
   goodsList: Goods[];
@@ -26,12 +27,14 @@ export const shopSlice = createSlice({
         item => item.id === action.payload
       );
       state.basket.unshift(state.goodsList[selectedProductIndx]);
+      toast.success('the product has been added to the basket');
     },
     deleteFromBasket(state, action: PayloadAction<string>): void {
       const idGoods = state.basket.findIndex(
         item => item.id === action.payload
       );
       state.basket.splice(idGoods, 1);
+      toast.info('the product has been removed from the basket');
     },
     getGoodsFetch(state): void {
       state.loading = true;

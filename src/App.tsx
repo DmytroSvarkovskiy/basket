@@ -1,4 +1,6 @@
 import { GlobalStyle } from './globalStyle';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Route, Routes } from 'react-router-dom';
 import { useAppDispatch } from './hooks';
 import { getGoodsFetch } from './redux';
@@ -21,6 +23,7 @@ function App() {
           <Route path="/basket" element={<Basket />} />
         </Route>
       </Routes>
+      <ToastContainer />
       <GlobalStyle />
     </div>
   );
