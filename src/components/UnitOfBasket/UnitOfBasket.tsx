@@ -9,25 +9,26 @@ import {
   CountBasketWrap,
   RemainterBasket,
 } from './UnitOfBasked.styled';
-import { useState } from 'react';
-import { deleteFromBasket } from '../../redux';
+import { useState, useEffect } from 'react';
+import { deleteFromBasket, changeTotalPrice } from '../../redux';
 import { useAppDispatch } from '../../hooks';
 
-type Price = {
-  calculationPrice: React.Dispatch<React.SetStateAction<number>>;
-};
-export const UnitOfBasket: React.FC<Goods & Price> = ({
+export const UnitOfBasket: React.FC<Goods> = ({
   id,
   name,
   price,
   avatar,
   remainder,
-  calculationPrice,
 }) => {
   const [count, setCount] = useState<number>(1);
 
   const dispatch = useAppDispatch();
-
+  useEffect(() => {
+    dispatch(changeTotalPrice(count * price));
+    return () => {
+      dispatch(changeTotalPrice(-count * price));
+    };
+  }, [count, dispatch, price]);
   // remove from basket
   const handleClickDelete = (id: string): void => {
     dispatch(deleteFromBasket(id));
@@ -35,11 +36,11 @@ export const UnitOfBasket: React.FC<Goods & Price> = ({
   // change the quantity of the product
   const toAddCount = () => {
     setCount(prevCount => prevCount + 1);
-    calculationPrice(prevPrice => prevPrice + price);
+    // dispatch(changeTotalPrice(price));
   };
   const toReduceClick = () => {
     setCount(prevCount => prevCount - 1);
-    calculationPrice(prevPrice => prevPrice - price);
+    // dispatch(changeTotalPrice(-price));
   };
 
   return (

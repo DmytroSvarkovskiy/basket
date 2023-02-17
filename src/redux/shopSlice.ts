@@ -7,6 +7,7 @@ type GoodState = {
   error: boolean;
   loading: boolean;
   basket: Goods[];
+  totalPrise: number;
 };
 
 const initialState: GoodState = {
@@ -14,6 +15,7 @@ const initialState: GoodState = {
   error: false,
   loading: false,
   basket: [],
+  totalPrise: 0,
 };
 
 // create slice
@@ -35,6 +37,9 @@ export const shopSlice = createSlice({
       );
       state.basket.splice(idGoods, 1);
       toast.info('the product has been removed from the basket');
+    },
+    changeTotalPrice(state, action: PayloadAction<number>): void {
+      state.totalPrise += action.payload;
     },
     getGoodsFetch(state): void {
       state.loading = true;
@@ -61,4 +66,5 @@ export const {
   getGoodsFulfilled,
   getGoodsError,
   deleteFromBasket,
+  changeTotalPrice,
 } = shopSlice.actions;
