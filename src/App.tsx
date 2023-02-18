@@ -9,7 +9,7 @@ import { Layout, MainPage } from './components';
 
 const Basket = lazy(() => import('./components/'));
 
-function App() {
+const App: React.FC = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getGoodsFetch());
@@ -27,6 +27,6 @@ function App() {
       <GlobalStyle />
     </div>
   );
-}
+};
 
 export default App;
