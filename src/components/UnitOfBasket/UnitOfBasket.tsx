@@ -1,8 +1,7 @@
 import { Goods } from '../../types';
+import { Remainder, Item, ItemImg, TextWrap } from '../index';
+import { toast } from 'react-toastify';
 import {
-  ItemBasket,
-  ItemImgBasket,
-  TextWrapBasket,
   DeleteBtn,
   DeleteIcon,
   CountBtn,
@@ -26,6 +25,7 @@ export const UnitOfBasket: React.FC<Goods> = ({
   // remove from basket
   const handleClickDelete = (id: string): void => {
     dispatch(deleteFromBasket(id));
+    toast.info(`${name} has been removed from the basket`);
   };
   // change the quantity of the product
   const toAddCount = () => {
@@ -38,12 +38,12 @@ export const UnitOfBasket: React.FC<Goods> = ({
   };
 
   return (
-    <ItemBasket id={id}>
-      <ItemImgBasket src={avatar} alt={name} draggable={false} />
-      <TextWrapBasket>
+    <Item id={id}>
+      <ItemImg src={avatar} alt={name} draggable={false} />
+      <TextWrap>
         <p>Name:&nbsp;{name}</p>
         <p>Price:&nbsp;{price}$</p>
-      </TextWrapBasket>
+      </TextWrap>
       <CountBasketWrap>
         {/* it is not possible to choose less than 1 product, for this we make the
         button inactive */}
@@ -62,10 +62,12 @@ export const UnitOfBasket: React.FC<Goods> = ({
         </CountBtn>
       </CountBasketWrap>
       {/* calculate and show the remainder */}
-      <RemainterBasket>Remainter: &nbsp;{+remainder - count}</RemainterBasket>
+      <RemainterBasket>
+        Remainter:&nbsp;<Remainder>{+remainder - count}</Remainder>{' '}
+      </RemainterBasket>
       <DeleteBtn onClick={() => handleClickDelete(id)} title="delete">
         <DeleteIcon />
       </DeleteBtn>
-    </ItemBasket>
+    </Item>
   );
 };

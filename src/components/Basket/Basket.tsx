@@ -1,8 +1,8 @@
 import { useAppSelector } from '../../hooks';
+import { GoodsUl } from '../index';
 import {
   TitleBasket,
   BasketWrap,
-  BasketUl,
   OrderBtn,
   InfoOrderWrap,
 } from './Basket.styled';
@@ -25,16 +25,17 @@ const Basket: React.FC = () => {
         </TitleBasket>
       ) : (
         <>
+          {/* if the goods in the basket */}
           <TitleBasket draggable={false}>Complete your purchase</TitleBasket>
           <InfoOrderWrap>
             {' '}
-            <h3>Total Price:{totalPrice}$</h3>
-            <h3>Quantity of goods:{goodsInBasket.length}</h3>
+            <h3>Total Price:&nbsp;{totalPrice}$</h3>
+            <h3>Goods in the basket:&nbsp;{goodsInBasket.length}</h3>
             <OrderBtn>To order</OrderBtn>
           </InfoOrderWrap>
         </>
       )}
-      <BasketUl>
+      <GoodsUl>
         {/* map the list of products and dynamically create cards with products */}
         {goodsInBasket.map(({ id, name, price, avatar, remainder }) => {
           return (
@@ -48,7 +49,7 @@ const Basket: React.FC = () => {
             />
           );
         })}
-      </BasketUl>
+      </GoodsUl>
     </BasketWrap>
   );
 };

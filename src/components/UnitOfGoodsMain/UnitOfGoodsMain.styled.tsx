@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 export const Item = styled.li`
   width: 281px;
+  position: relative;
   cursor: pointer;
   border: 1px solid gray;
   border-radius: 7px;
@@ -51,7 +52,7 @@ export const BuyBtn = styled.button`
   transition: background-color 0.25s, box-shadow 0.3s;
 `;
 // if there are less than 4 units of the product left, the text is red
-export const Remainder = styled.span<{ children: string }>`
+export const Remainder = styled.span<{ children: string | number }>`
   color: ${({ children }): string => {
     return +children < 4 ? 'red' : 'inherit';
   }};

@@ -3,7 +3,8 @@ import { getGoodsFulfilled, getGoodsError } from './shopSlice';
 import { Goods } from '../types';
 import { fetchGoods } from '../api';
 
-function* workGetGoodsPending() {
+// work saga will run on actions getGoodsFetch
+function* workGetGoodsFetch() {
   try {
     const response: Goods[] = yield call(fetchGoods);
     yield put(getGoodsFulfilled(response));
@@ -13,5 +14,5 @@ function* workGetGoodsPending() {
 }
 
 export function* goodsSaga() {
-  yield takeEvery('commodityState/getGoodsFetch', workGetGoodsPending);
+  yield takeEvery('commodityState/getGoodsFetch', workGetGoodsFetch);
 }

@@ -22,7 +22,7 @@ export const store = configureStore({
   // connect middleware
   middleware: [saga],
 });
-
+// start saga
 saga.run(goodsSaga);
 
 export type RootState = ReturnType<typeof store.getState>;

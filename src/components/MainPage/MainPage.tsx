@@ -3,10 +3,14 @@ import { UnitOfGoodsMain } from '../index';
 import { Title, GoodsUl, MainWrap } from './MainPage.styled';
 export const MainPage: React.FC = () => {
   const goodsList = useAppSelector(state => state.commodityState.goodsList);
-
+  const error = useAppSelector(state => state.commodityState.error);
   return (
     <MainWrap>
-      <Title>Wellcome to our shop! Сhoose the product you like </Title>
+      <Title>
+        {error
+          ? 'Something went wrong, please try again'
+          : 'Wellcome to our shop! Сhoose the product you like'}
+      </Title>
       <GoodsUl>
         {goodsList.map(({ id, name, price, avatar, remainder }) => {
           return (

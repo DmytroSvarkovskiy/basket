@@ -48,7 +48,6 @@ export const shopSlice = createSlice({
       );
       // removing the product
       state.basket.splice(indxGoods, 1);
-      toast.info('the product has been removed from the basket');
     },
     // request to the server
     getGoodsFetch(state): void {

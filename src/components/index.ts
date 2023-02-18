@@ -5,3 +5,5 @@ export { default } from './Basket/Basket';
 export * from './Container/Container';
 export * from './UnitOfGoodsMain/UnitOfGoodsMain';
 export * from './UnitOfBasket/UnitOfBasket';
+export * from './UnitOfGoodsMain/UnitOfGoodsMain.styled';
+export * from './MainPage/MainPage.styled';

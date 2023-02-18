@@ -2,6 +2,8 @@ import styled from 'styled-components';
 export const TitleBasket = styled.h2`
   text-align: center;
   margin-bottom: 30px;
+  color: #12361a;
+  font-size: 28px;
 `;
 
 export const BasketUl = styled.ul`
@@ -34,7 +36,8 @@ export const OrderBtn = styled.button`
 `;
 export const InfoOrderWrap = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
-  font-size: 24px;
+  font-size: 20px;
+  color: #266d35;
 `;
